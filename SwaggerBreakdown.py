@@ -46,5 +46,5 @@ for dir_name, files in directories_and_files.items():
     print(f"Directory: {dir_name}")
     for file in files:
         print(f"  - {file}")
-        if (file == "openapi.yaml"):
+        if file == "openapi.yaml":
             updateSwaggers(file)
