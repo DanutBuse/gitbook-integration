@@ -16,7 +16,7 @@ def updateSwaggers(file, directory):
             swaggers_content += f"{{% endopenapi %}}\n\n"
     
     # Write the updated README.md
-    with open("swaggers.md", "w") as f:
+    with open(directory + "/swaggers.md", "w") as f:
         f.write(swaggers_content)
     
     print("{file} processed successfully!")
