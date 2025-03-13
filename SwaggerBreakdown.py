@@ -1,19 +1,50 @@
 import yaml  # Import PyYAML
 import json
+import os       
 
-# Load OpenAPI YAML
-with open("openapi.yaml", "r") as f:
-    openapi = yaml.safe_load(f)  # Convert YAML to Python dictionary
+def updateSwaggers(file):
+    # Load OpenAPI YAML
+    with open(file, "r") as f:
+        openapi = yaml.safe_load(f)  # Convert YAML to Python dictionary
+    
+    swaggers_content = ""
+    
+    for path in openapi["paths"]:
+        for method in openapi["paths"][path]:
+            swaggers_content += f"{{% openapi src=\"{file}\" path=\"{path}\" method=\"{method}\" expanded=\"true\" %}}\n"
+            swaggers_content += f"{{% endopenapi %}}\n\n"
+    
+    # Write the updated README.md
+    with open("swaggers.md", "w") as f:
+        f.write(swaggers_content)
+    
+    print("{file} processed successfully!")
+    
+def get_child_dirs_and_files(parent_dir="."):
+    """
+    Traverses all child directories of the given parent directory.
+    Returns a dictionary where keys are directory names and values are lists of files inside them.
+    """
+    result = {}
 
-readme_content = "# API Documentation\n\n"
+    for root, dirs, files in os.walk(parent_dir):
+        # Skip the root directory itself
+        if root == parent_dir:
+            continue
 
-for path in openapi["paths"]:
-    for method in openapi["paths"][path]:
-        readme_content += f"{{% openapi src=\"./openapi.yaml\" path=\"{path}\" method=\"{method}\" expanded=\"true\" %}}\n"
-        readme_content += f"{{% endopenapi %}}\n\n"
+        # Get relative path name of the child directory
+        relative_dir = os.path.relpath(root, parent_dir)
+        result[relative_dir] = files
 
-# Write the updated README.md
-with open("README.md", "w") as f:
-    f.write(readme_content)
+    return result
 
-print("README.md updated successfully!")
+# Process all openapi files
+parent_directory = "."  # Change this to any directory path
+directories_and_files = get_child_dirs_and_files(parent_directory)
+
+for dir_name, files in directories_and_files.items():
+    print(f"Directory: {dir_name}")
+    for file in files:
+        print(f"  - {file}")
+        if (file == "openapi.yaml")
+            updateSwaggers(file)
