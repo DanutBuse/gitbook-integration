@@ -32,6 +32,7 @@ jobs:
         python SwaggerBreakdown.py
     - name: 'Update version'
       run: |
+          git config --global user.email "danut.buse@example.com"
           git config --global user.name "github-action"
           git add .
           git commit -am "Updated README with breakdown swaggers"
