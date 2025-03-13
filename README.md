@@ -4,7 +4,6 @@ test sync
 km
 test from gibook
 ml
-
 ## Create a new user
 
 <mark style="color:green;">`POST`</mark> `/users`
