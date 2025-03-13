@@ -2,7 +2,7 @@
 
 test sync
 km
-test from gitbook
+test from gibook
 ml
 
 ## Create a new user
