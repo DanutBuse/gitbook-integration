@@ -30,7 +30,6 @@ jobs:
         python SwaggerBreakdown.py
     - name: 'Update version'
       run: |
-          git config user.name github-actions
           git add .
           git commit -am "Updated README with breakdown swaggers"
           git push  
