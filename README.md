@@ -1,4 +1,16 @@
-# API Documentat
+# API Documentation
+
+{% openapi src="./openapi.yaml" path="/pet" expanded="true" %}
+{% endopenapi %}
+
+{% openapi src="./openapi.yaml" path="/pet/findByStatus" expanded="true" %}
+{% endopenapi %}
+
+{% openapi src="./openapi.yaml" path="/pet/findByTags" expanded="true" %}
+{% endopenapi %}
+
+{% openapi src="./openapi.yaml" path="/pet/{petId}" expanded="true" %}
+{% endopenapi %}
 
 {% openapi src="./openapi.yaml" path="/pet/{petId}/uploadImage" expanded="true" %}
 {% endopenapi %}
