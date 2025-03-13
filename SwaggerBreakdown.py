@@ -4,7 +4,7 @@ import os
 
 def updateSwaggers(file, directory):
     # Load OpenAPI YAML
-    file_path = "/" + directory + "/" + file;
+    file_path = directory + "/" + file;
     with open(file_path, "r") as f:
         openapi = yaml.safe_load(f)  # Convert YAML to Python dictionary
     
