@@ -8,7 +8,8 @@ with open("openapi.yaml", "r") as f:
 readme_content = "# API Documentation\n\n"
 
 for path in openapi.get("paths", {}):
-    readme_content += f"{{% openapi src=\"./openapi.yaml\" path=\"{path}\" method=\"GET\" expanded=\"true\" %}}\n"
+    for method in openapi.get("paths.{path}", {}):
+        readme_content += f"{{% openapi src=\"./openapi.yaml\" path=\"{path}\" method=\"{method}\" expanded=\"true\" %}}\n\n"
 
 # Write the updated README.md
 with open("README.md", "w") as f:
