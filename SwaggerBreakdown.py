@@ -12,7 +12,7 @@ def updateSwaggers(file, directory):
     
     for path in openapi["paths"]:
         for method in openapi["paths"][path]:
-            swaggers_content += f"{{% openapi src=\"{file_path}\" path=\"{path}\" method=\"{method}\" expanded=\"true\" %}}\n"
+            swaggers_content += f"{{% openapi src=\"openapi.yaml\" path=\"{path}\" method=\"{method}\" expanded=\"true\" %}}\n"
             swaggers_content += f"{{% endopenapi %}}\n\n"
     
     # Write the updated README.md
