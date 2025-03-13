@@ -2,3 +2,6 @@
 
 
 Deprecated primitive APIs
+
+```{include} swaggers.md
+```
