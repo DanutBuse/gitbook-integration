@@ -2,7 +2,7 @@ import yaml  # Import PyYAML
 import json
 import os       
 
-def updateSwaggers(file):
+def updateSwaggers(file, directory):
     # Load OpenAPI YAML
     with open(file, "r") as f:
         openapi = yaml.safe_load(f)  # Convert YAML to Python dictionary
@@ -11,7 +11,8 @@ def updateSwaggers(file):
     
     for path in openapi["paths"]:
         for method in openapi["paths"][path]:
-            swaggers_content += f"{{% openapi src=\"{file}\" path=\"{path}\" method=\"{method}\" expanded=\"true\" %}}\n"
+            filePath = directory + "/" + path;
+            swaggers_content += f"{{% openapi src=\"{filePath}\" path=\"{path}\" method=\"{method}\" expanded=\"true\" %}}\n"
             swaggers_content += f"{{% endopenapi %}}\n\n"
     
     # Write the updated README.md
@@ -47,4 +48,4 @@ for dir_name, files in directories_and_files.items():
     for file in files:
         print(f"  - {file}")
         if file == "openapi.yaml":
-            updateSwaggers(file)
+            updateSwaggers(file, dir_name)
