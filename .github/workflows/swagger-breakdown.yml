@@ -35,6 +35,4 @@ jobs:
           git config --global user.name "github-action"
           git add .
           git commit -am "Updated README with breakdown swaggers"
-          git push  
-      env:
-          GH_TOKEN: ${{ secrets.PAT }}
+          git push
