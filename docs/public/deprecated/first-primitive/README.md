@@ -3,5 +3,4 @@
 
 Deprecated primitive APIs
 
-```{include} swaggers.md
-```
+{% include "swaggers.md" %}
