@@ -1,4 +1,4 @@
 # Table of contents
 
-* [gitbook-integration](README.md)
+* [API Documentation](README.md)
 * [gitbook-second](README.md)
