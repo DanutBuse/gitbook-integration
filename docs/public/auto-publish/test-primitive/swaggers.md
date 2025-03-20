@@ -1,3 +1,9 @@
+{% openapi src="openapi.yaml" path="/pet" method="put" expanded="true" %}
+{% endopenapi %}
+
+{% openapi src="openapi.yaml" path="/pet" method="post" expanded="true" %}
+{% endopenapi %}
+
 {% openapi src="openapi.yaml" path="/pet/findByStatus" method="get" expanded="true" %}
 {% endopenapi %}
 
@@ -14,11 +20,5 @@
 {% endopenapi %}
 
 {% openapi src="openapi.yaml" path="/pet/{petId}/uploadImage" method="post" expanded="true" %}
-{% endopenapi %}
-
-{% openapi src="openapi.yaml" path="/pet" method="put" expanded="true" %}
-{% endopenapi %}
-
-{% openapi src="openapi.yaml" path="/pet" method="post" expanded="true" %}
 {% endopenapi %}
 
