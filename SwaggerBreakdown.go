@@ -26,8 +26,8 @@ func BreakdownSwagger(data interface{}, filename string, fileDir string) {
 				if childMap, ok := value.(map[string]interface{}); ok {
 					for key := range childMap {
 						fmt.Printf("  Child: %s\n", key)
-						file.WriteString(fmt.Sprintf("{{%% openapi src=\"%s\" path=\"%s\" method=\"%s\" expanded=\"true\" %%}}\n", filename, path, key))
-						file.WriteString("{{% endopenapi %}}\n\n")
+						file.WriteString(fmt.Sprintf("{%% openapi src=\"%s\" path=\"%s\" method=\"%s\" expanded=\"true\" %%}\n", filename, path, key))
+						file.WriteString("{% endopenapi %}\n\n")
 					}
 				}
 			}
