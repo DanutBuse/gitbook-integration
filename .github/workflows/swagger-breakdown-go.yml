@@ -14,7 +14,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    if: !contains(github.event.head_commit.message, '[BREAKDOWN_SWAGGER]')
     steps:
     - uses: actions/checkout@v3
       with:
@@ -34,5 +34,5 @@ jobs:
           git config --global user.name "github-action"
           git status
           git add .
-          git commit -am "Updated README with breakdown swaggers"
+          git commit -am "[BREAKDOWN_SWAGGER] Generating swagger GitBook directives"
           git push
