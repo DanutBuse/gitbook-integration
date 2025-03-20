@@ -20,7 +20,7 @@ jobs:
         go-version: '1.20'
 
     - name: Breakdown swagger
-      run: ./BreakDownSwagger.go
+      run: ./SwaggerBreakDown.go
     - name: 'Update repo'
       run: |
           git config --global user.email "danut.buse@example.com"
