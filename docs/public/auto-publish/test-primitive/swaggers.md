@@ -1,3 +1,6 @@
+{{% openapi src="openapi.yaml" path="/pet/{petId}/uploadImage" method="post" expanded="true" %}}
+{{% endopenapi %}}
+
 {{% openapi src="openapi.yaml" path="/pet" method="put" expanded="true" %}}
 {{% endopenapi %}}
 
@@ -17,8 +20,5 @@
 {{% endopenapi %}}
 
 {{% openapi src="openapi.yaml" path="/pet/{petId}" method="post" expanded="true" %}}
-{{% endopenapi %}}
-
-{{% openapi src="openapi.yaml" path="/pet/{petId}/uploadImage" method="post" expanded="true" %}}
 {{% endopenapi %}}
 
