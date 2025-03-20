@@ -27,7 +27,7 @@ jobs:
 
     - name: Breakdown swagger
       run: |
-          go install gopkg.in/yaml.v3
+          go install gopkg.in/yaml.v3@latest
           go run SwaggerBreakdown.go
     - name: 'Update repo'
       run: |
