@@ -14,7 +14,7 @@ func BreakdownSwagger(data interface{}, filename string, fileDir string) {
 	swaggersFilePath := filepath.Join(fileDir, "swaggers.md")
 	file, err := os.Create(swaggersFilePath)
 	if err != nil {
-		fmt.Println("Error creating file:", err)
+		fmt.Errorf("Error creating file:", err)
 		return
 	}
 	defer file.Close()
@@ -32,10 +32,10 @@ func BreakdownSwagger(data interface{}, filename string, fileDir string) {
 				}
 			}
 		} else {
-			fmt.Println("No 'paths' key found in the file.")
+			fmt.Errorf("No 'paths' key found in the file.")
 		}
 	} else {
-		fmt.Println("Invalid file structure.")
+		fmt.Errorf("Invalid file structure.")
 	}
 }
 
@@ -43,7 +43,7 @@ func BreakdownSwagger(data interface{}, filename string, fileDir string) {
 func ProcessFiles(root string) {
 	filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
-			fmt.Println("Error accessing file:", err)
+			fmt.Errorf("Error accessing file:", err)
 			return nil
 		}
 
@@ -54,7 +54,7 @@ func ProcessFiles(root string) {
 		if info.Name() == "openapi.yaml" || info.Name() == "openapi.json" {
 			data, err := ioutil.ReadFile(path)
 			if err != nil {
-				fmt.Printf("Error reading file %s: %v\n", path, err)
+				fmt.Errorf("Error reading file %s: %v\n", path, err)
 				return nil
 			}
 
@@ -83,7 +83,7 @@ func ProcessFiles(root string) {
 func main() {
 	rootDir, err := os.Getwd()
 	if err != nil {
-		fmt.Println("Error getting current directory:", err)
+		fmt.Errorf("Error getting current directory:", err)
 		return
 	}
 
