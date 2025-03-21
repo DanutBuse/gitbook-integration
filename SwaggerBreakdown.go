@@ -14,7 +14,7 @@ func BreakdownSwagger(data interface{}, filename string, fileDir string) {
 	swaggersFilePath := filepath.Join(fileDir, "swaggers.md")
 	file, err := os.Create(swaggersFilePath)
 	if err != nil {
-		panic("Error creating file:", err)
+		panic(err)
 	}
 	defer file.Close()
 
@@ -42,7 +42,7 @@ func BreakdownSwagger(data interface{}, filename string, fileDir string) {
 func ProcessFiles(root string) {
 	filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
-			panic("Error accessing file:", err)
+			panic(err)
 		}
 
 		if info.IsDir() {
@@ -52,7 +52,7 @@ func ProcessFiles(root string) {
 		if info.Name() == "openapi.yaml" || info.Name() == "openapi.json" {
 			data, err := ioutil.ReadFile(path)
 			if err != nil {
-				panic("Error reading file %s: %v\n", path, err)
+				panic(err)
 			}
 
 			var parsedData interface{}
@@ -66,7 +66,7 @@ func ProcessFiles(root string) {
 			}
 
 			if err != nil {
-				panic("Error parsing file %s: %v\n", path, err)
+				panic(err)
 			}
 
 			fileDir := filepath.Dir(path)
@@ -79,7 +79,7 @@ func ProcessFiles(root string) {
 func main() {
 	rootDir, err := os.Getwd()
 	if err != nil {
-		panic("Error getting current directory:", err)
+		panic(err)
 	}
 
 	ProcessFiles(rootDir)
